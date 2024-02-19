@@ -442,12 +442,16 @@
                                     <p>Total Price</p>
                                     <p>BDT <span id="total-price">0</span></p>
                                 </div>
-                                <div id="coupon-section" class="flex items-center relative mt-4">
+                                <div id="coupon-section" class="flex items-center relative mt-4 hidden">
                                     <input id="coupon-input"
                                         class="bg-white rounded-xl py-5 px-5 placeholder:text-sm flex-1 outline-none"
                                         placeholder="Have any coupon?" type="text">
-                                    <button onclick="applyCoupon()" id="btn-apply"
+                                    <button disabled onclick="applyCoupon()" id="btn-apply"
                                         class="btn rounded-lg bg-[#1DD100] text-white absolute right-2 px-5 py-3 text-base font-semibold content-center">Apply</button>
+                                </div>
+                                <div id="discount-section" class="font-medium text-base flex justify-between mt-4 hidden">
+                                    <p>Discount</p>
+                                    <p>BDT <span id="discount-price">0</span></p>
                                 </div>
                                 <div class="font-medium text-base flex justify-between mt-4">
                                     <p>Grand Total</p>
