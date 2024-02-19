@@ -4,7 +4,7 @@ function setInnerText(id, value) {
 
 const allSeatButton = document.getElementsByClassName("btn-seat-select");
 let seatCount = 0;
-let seatCountDecrease = 28;
+let seatCountDecrease = 40;
 
 const totalPriceStr = document.getElementById("total-price").innerText;
 let totalPrice = parseInt(totalPriceStr);
