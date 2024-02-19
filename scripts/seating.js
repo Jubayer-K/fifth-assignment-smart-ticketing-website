@@ -6,34 +6,42 @@ const allSeatButton = document.getElementsByClassName("btn-seat-select");
 let seatCount = 0;
 let seatCountDecrease = 28;
 
+const totalPriceStr = document.getElementById("total-price").innerText;
+let totalPrice = parseInt(totalPriceStr);
+const grandTotalStr = document.getElementById("grand-total").innerText;
+let grandTotal = parseInt(grandTotalStr);
+const perTicketPrice = 550;
+
 const couponCodes = {
   new15: 0.15,
   "couple 20": 0.2,
 };
+function applyCoupon() {
+    const couponInputValue = document.getElementById("coupon-input").value;
+    const couponCode = couponCodes[couponInputValue.toLowerCase()];
+    const discountedPrice = totalPrice * couponCode;
+    const couponSection = document.getElementById("coupon-section");
 
-function disabledButton (event) {
-  // event.target.setAttribute("disabled", true);
-  console.log(event);
+    grandTotal = totalPrice - discountedPrice;
+    document.getElementById("grand-total").innerText = grandTotal;
+    couponSection.classList.add("hidden");
 }
-function unselectedSeatDisabled (event){
-  for (const button of allSeatButton){
-    disabledButton(button)
-  }
 
+function unselectedSeatDisabled() {
+  for (const button of allSeatButton) {
+     button.setAttribute("disabled", true);
+  }
 }
 
 for (const button of allSeatButton) {
   button.addEventListener("click", function (event) {
     event.target.setAttribute("disabled", true);
     const alert = document.getElementById("alert");
-    if (seatCount >= 4) {
-      alert.classList.remove("hidden");
-      return;
-    }
+
+   
     event.target.style.background = "#1DD100";
     event.target.style.color = "white";
     const seatNum = event.target.innerText;
-    console.log(seatNum);
     seatCount++;
     setInnerText("seat-count", seatCount);
     seatCountDecrease--;
@@ -65,27 +73,12 @@ for (const button of allSeatButton) {
     );
     selectedSeatContainer.appendChild(div);
 
-    unselectedSeatDisabled()
+    if (seatCount == 4 ) {
+      unselectedSeatDisabled();
+      alert.classList.remove("hidden");
+    }
 
-
-    const totalPriceStr = document.getElementById("total-price").innerText;
-    let totalPrice = parseInt(totalPriceStr);
-    const grandTotalStr = document.getElementById("grand-total").innerText;
-    let grandTotal = parseInt(grandTotalStr);
-    const perTicketPrice = 550;
     setInnerText("total-price", totalPrice + perTicketPrice);
     totalPrice += perTicketPrice;
-
-    document.getElementById("btn-apply").addEventListener("click", function () {
-      const couponInputValue = document.getElementById("coupon-input").value;
-      console.log(couponInputValue);
-      const couponCode = couponCodes[couponInputValue.toLowerCase()];
-      console.log(couponCode);
-      const discountedPrice = totalPrice * couponCode;
-      grandTotal = totalPrice - discountedPrice;
-      document.getElementById("grand-total").innerText = grandTotal;
-      const couponSection = document.getElementById("coupon-section");
-      couponSection.classList.add("hidden");
-    });
   });
 }

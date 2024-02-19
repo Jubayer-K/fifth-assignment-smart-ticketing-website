@@ -446,7 +446,7 @@
                                     <input id="coupon-input"
                                         class="bg-white rounded-xl py-5 px-5 placeholder:text-sm flex-1 outline-none"
                                         placeholder="Have any coupon?" type="text">
-                                    <button disabled id="btn-apply"
+                                    <button onclick="applyCoupon()" id="btn-apply"
                                         class="btn rounded-lg bg-[#1DD100] text-white absolute right-2 px-5 py-3 text-base font-semibold content-center">Apply</button>
                                 </div>
                                 <div class="font-medium text-base flex justify-between mt-4">
@@ -483,7 +483,7 @@
                                             <div class="modal-action">
                                                 <form method="dialog">
                                                     <!-- if there is a button in form, it will close the modal -->
-                                                    <button class="btn">Close</button>
+                                                    <button class="btn px-8 bg-[#1DD100] text-white">Close</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -563,7 +563,6 @@
 
 
     <script src="scripts/seating.js"></script>
-    <script src="scripts/costing.js"></script>
     <script src="scripts/inputForm.js"></script>
 </body>
 
