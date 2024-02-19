@@ -85,6 +85,7 @@ for (const button of allSeatButton) {
     }
 
     setInnerText("total-price", totalPrice + perTicketPrice);
+    setInnerText("grand-total", totalPrice + perTicketPrice);
     totalPrice += perTicketPrice;
   });
 }
