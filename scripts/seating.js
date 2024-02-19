@@ -89,3 +89,7 @@ for (const button of allSeatButton) {
     totalPrice += perTicketPrice;
   });
 }
+
+document.getElementById('btn-continue').addEventListener('click',function(){
+  window.location.reload();
+})
